@@ -1,0 +1,77 @@
+
+<div class="animate__animated animate__fadeIn">
+
+    <app-spinner [display]="status"></app-spinner>
+
+
+    <div *ngIf="!pais; else divPais" 
+        class="alert alert-info">
+        Espere por favor...
+    </div>
+    
+     
+    <ng-template #divPais>
+    
+        <span *ngFor="let data of pais">
+    
+            <div class="row justify-content-center">
+                <div class="col-7">
+                    <h1>{{ data.name.nativeName.spa?.common || data.name.common }}</h1>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-4">
+                    <h3>Bandera</h3>
+                    <img [src]="data.flags.svg" class="img-thumbnail">
+                </div>
+        
+                <div class="col">
+                    <h3>Información</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Población</strong> {{ data.population | number }}
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Capital</strong> {{ data.capital }}
+                        </li>
+    
+                        <li class="list-group-item">
+                            <strong>Código numérico</strong> {{ data.ccn3 }}
+                        </li>
+    
+                        <li class="list-group-item">
+                            <strong>Código cca3</strong> {{ data.cca3 }}
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Moneda</strong> {{ nombreMoneda }}
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Símbolo de moneda</strong> {{ simboloMoneda }}
+                        </li>
+    
+                    </ul>
+                </div>
+            </div>
+
+            
+            <h3>Traducciones</h3>
+            <div class="row">
+                <div class="col">
+                    <span class="badge bg-primary mr-1" *ngFor="let translation of translations">
+                        {{ translation }}
+                    </span>
+                </div>
+            </div>
+        </span>
+
+        <app-mapa [lat]="lat" [lng]="lng"></app-mapa>
+
+    </ng-template>
+    
+    
+
+</div>    

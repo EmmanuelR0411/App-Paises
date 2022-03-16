@@ -1,0 +1,79 @@
+<!-- <table *ngIf="paises.length > 0"
+    class="table table-hover">
+    <thead>
+        <tr>
+            <th> # </th>
+            <th> Bandera </th>
+            <th> Nombre </th>
+            <th> Capital </th>
+            <th> Población </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let pais of paises; let i = index;" class="animate__animated animate__backInRight">
+            <td>
+                {{ i + 1 }}
+            </td>
+            <td> 
+                <img class="small-flag" 
+                    [src]="pais.flags.svg" [alt]="pais.flag">
+            </td>
+            <td> 
+                {{ pais.name.nativeName.spa?.common || pais.name.common }}     
+            </td>
+            <td>
+                {{ pais.capital }}
+            </td>
+            <td> 
+                {{ pais.population | number }}    
+            </td>
+            <td>
+                <a [routerLink]="['/pais', pais.cca2]">
+                    Ver...
+                </a>
+            </td>
+
+        </tr>
+    </tbody>
+</table> -->
+
+<span *ngIf="paises.length > 0">
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 animate__animated animate__backInRight mt-3">
+
+        <div class="col" *ngFor="let pais of paises; let i = index;">
+
+            <div class="flip-card">
+                <div class="card text-center align-items-center card-container">
+
+                    <div class="card-block">
+
+                        <img [src]="pais.flags.svg" class="card-img-top small-flag mt-2">
+                        <div class="card-body">
+                          <h5 class="card-title"> {{ pais.name.nativeName.spa?.common || pais.name.common }} </h5>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card-block-back">
+                        <h4> {{ pais.name.nativeName.spa?.common || pais.name.common }}</h4>
+                        <hr>
+                        <h5> Capital: <br/> 
+                            <small>{{ pais.capital }}</small> 
+                        </h5>
+                        <h5> Población: <br/> 
+                            <small>{{ pais.population | number }}</small> 
+                        </h5>
+                        <a [routerLink]="['/pais', pais.cca2]">
+                            Ver...
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+</span>
